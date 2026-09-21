@@ -1,0 +1,52 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; overflow: hidden; height: 100vh; background: linear-gradient(to bottom, #87CEEB 0%, #E0F7FA 55%, #C8E6C9 100%); }
+.scene { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+.sky { position: absolute; top: 0; left: 0; width: 100%; height: 70%; z-index: 1; }
+.sun { position: absolute; top: 40px; right: 60px; width: 80px; height: 80px; background: radial-gradient(circle, #FFEB3B, #FFC107); border-radius: 50%; box-shadow: 0 0 40px 15px rgba(255,193,7,0.5); }
+.cloud { position: absolute; background: #fff; border-radius: 50px; opacity: 0.85; }
+.cloud-1 { width: 120px; height: 40px; top: 80px; left: 10%; }
+.cloud-2 { width: 100px; height: 35px; top: 140px; right: 15%; }
+.ground { position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(to top, #5D4037, #8D6E63); z-index: 2; border-top: 8px solid #4E342E; }
+.soil-hole { position: absolute; top: 12px; left: 50%; transform: translateX(-50%) scale(0); width: 40px; height: 18px; background: #3E2723; border-radius: 50%; opacity: 0; transition: all 0.4s; }
+.soil-hole.active { transform: translateX(-50%) scale(1); opacity: 0.9; }
+.plant-container { position: absolute; bottom: 28%; left: 50%; transform: translateX(-50%); z-index: 10; }
+.stem { width: 12px; height: 0; background: linear-gradient(to right, #2E7D32, #4CAF50); border-radius: 6px; transition: height 2.8s cubic-bezier(0.4,0,0.2,1); }
+.stem.grown { height: 220px; }
+.leaf { position: absolute; width: 50px; height: 25px; background: linear-gradient(135deg, #43A047, #2E7D32); border-radius: 0 100% 0 100%; opacity: 0; transition: all 0.8s; }
+.leaf-left { bottom: 100px; left: -35px; transform: rotate(-40deg) scale(0); }
+.leaf-right { bottom: 150px; right: -35px; transform: rotate(40deg) scale(0); border-radius: 100% 0 100% 0; }
+.leaf.visible { opacity: 1; transform: rotate(-40deg) scale(1); }
+.leaf-right.visible { transform: rotate(40deg) scale(1); }
+.flower { position: absolute; top: -40px; left: 50%; transform: translateX(-50%) scale(0); width: 120px; height: 120px; transition: transform 1.3s cubic-bezier(0.34,1.56,0.64,1); }
+.flower.bloomed { transform: translateX(-50%) scale(1); }
+.petals { position: absolute; width: 100%; height: 100%; }
+.petal { position: absolute; width: 40px; height: 70px; background: linear-gradient(to top, #FF8F00, #FFC107, #FFEB3B); border-radius: 50% 50% 10% 10%; top: 50%; left: 50%; transform-origin: center bottom; transform: translate(-50%,-100%) rotate(calc(var(--i)*30deg)) scaleY(0); transition: transform 0.65s ease; transition-delay: calc(var(--i)*0.06s); }
+.flower.bloomed .petal { transform: translate(-50%,-100%) rotate(calc(var(--i)*30deg)) scaleY(1); }
+.center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0); width: 50px; height: 50px; background: radial-gradient(circle, #5D4037, #3E2723); border-radius: 50%; transition: transform 0.5s ease 0.45s; }
+.flower.bloomed .center { transform: translate(-50%,-50%) scale(1); }
+.card { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.3); opacity: 0; z-index: 50; transition: all 0.9s cubic-bezier(0.34,1.56,0.64,1); }
+.card.show { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+.card-inner { background: linear-gradient(145deg, #FFF8E1, #FFECB3); border-radius: 24px; padding: 32px 36px; max-width: 400px; width: 90vw; box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 8px #FF8F00, 0 0 0 12px #FFC107; text-align: center; }
+.card-header { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 18px; }
+.card-header h1 { font-family: 'Dancing Script', cursive; font-size: 1.9rem; color: #E65100; }
+.greeting { font-size: 1.1rem; color: #5D4037; font-weight: 600; margin-bottom: 14px; }
+.message { font-size: 0.92rem; color: #4E342E; line-height: 1.55; margin-bottom: 12px; }
+.wish { font-family: 'Dancing Script', cursive; font-size: 1.25rem; color: #BF360C; margin-top: 16px; font-weight: 700; }
+.card-footer { margin-top: 22px; padding-top: 14px; border-top: 2px dashed #FF8F00; font-size: 0.9rem; color: #6D4C41; }
+.onboarding { position: absolute; inset: 0; z-index: 200; background: linear-gradient(160deg, rgba(255,248,225,0.97), rgba(255,236,179,0.96)); display: flex; align-items: center; justify-content: center; transition: opacity 0.7s, visibility 0.7s; }
+.onboarding.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.onboarding-content { text-align: center; padding: 20px; max-width: 340px; }
+.onboarding-subtitle { font-size: 0.95rem; color: #8D6E63; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.onboarding-title { font-family: 'Dancing Script', cursive; font-size: 2.6rem; color: #E65100; margin-bottom: 10px; }
+.onboarding-hint { font-size: 1rem; color: #5D4037; margin-bottom: 36px; }
+.seed-wrapper { position: relative; width: 110px; height: 110px; margin: 0 auto 28px; cursor: pointer; transition: transform 0.25s; }
+.seed-wrapper:hover { transform: scale(1.08); }
+.seed { position: absolute; top: 50%; left: 50%; width: 58px; height: 72px; transform: translate(-50%,-50%); background: linear-gradient(145deg, #8D6E63, #5D4037); border-radius: 50% 50% 48% 48%; box-shadow: 0 8px 20px rgba(62,39,35,0.35); animation: seedFloat 2.8s ease-in-out infinite; }
+.seed-inner { position: absolute; top: 18%; left: 50%; transform: translateX(-50%); width: 22px; height: 28px; background: linear-gradient(#A1887F, #6D4C41); border-radius: 40% 40% 50% 50%; opacity: 0.7; }
+.seed-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 90px; height: 90px; background: radial-gradient(circle, rgba(255,193,7,0.35), transparent 70%); border-radius: 50%; animation: glowPulse 2.2s ease-in-out infinite; }
+@keyframes seedFloat { 0%,100% { transform: translate(-50%,-50%) translateY(0); } 50% { transform: translate(-50%,-50%) translateY(-10px); } }
+@keyframes glowPulse { 0%,100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 1; transform: translate(-50%,-50%) scale(1.15); } }
+.seed.planting { animation: none; }
+.seed.planted { transform: translate(-50%, 180px) scale(0.35); opacity: 0; transition: all 0.9s; }
+.onboarding-footer { font-size: 0.85rem; color: #8D6E63; margin-top: 8px; }
+@media (max-width: 600px) { .stem.grown { height: 160px; } .flower { width: 90px; height: 90px; } .onboarding-title { font-size: 2.1rem; } }

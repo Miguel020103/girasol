@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌻 Tarjeta Girasol</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scene">
+    <div class="sky">
+      <div class="sun"></div>
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+    </div>
+    <div class="ground"><div class="soil-hole" id="soilHole"></div></div>
+    <div class="plant-container">
+      <div class="stem"></div>
+      <div class="leaf leaf-left"></div>
+      <div class="leaf leaf-right"></div>
+      <div class="flower">
+        <div class="petals">
+          <div class="petal" style="--i:0"></div><div class="petal" style="--i:1"></div>
+          <div class="petal" style="--i:2"></div><div class="petal" style="--i:3"></div>
+          <div class="petal" style="--i:4"></div><div class="petal" style="--i:5"></div>
+          <div class="petal" style="--i:6"></div><div class="petal" style="--i:7"></div>
+          <div class="petal" style="--i:8"></div><div class="petal" style="--i:9"></div>
+          <div class="petal" style="--i:10"></div><div class="petal" style="--i:11"></div>
+        </div>
+        <div class="center"></div>
+      </div>
+    </div>
+    <div class="card" id="card">
+      <div class="card-inner">
+        <div class="card-header">
+          <span class="emoji">🌻</span>
+          <h1>¡Feliz Día del Amor y la Amistad! 💛</h1>
+        </div>
+        <div class="card-body">
+          <p class="greeting">Para alguien muy especial…</p>
+          <p class="message">Solo quería aprovechar este día para decirte que me encanta compartir momentos contigo. Tienes esa forma de hacer que cualquier momento sea más divertido y que los días se sientan un poquito mejor.</p>
+          <p class="message">Gracias por las risas, las conversaciones y por ser alguien con quien siempre da gusto estar.</p>
+          <p class="wish">Espero que hoy recibas todo el cariño que mereces… y que también te saquen muchas sonrisas. 😊</p>
+        </div>
+        <div class="card-footer">Con mucho cariño ❤️</div>
+      </div>
+    </div>
+    <div class="onboarding" id="onboarding">
+      <div class="onboarding-content">
+        <p class="onboarding-subtitle">Un pequeño regalo para ti</p>
+        <h2 class="onboarding-title">Planta esta semilla</h2>
+        <p class="onboarding-hint">Toca la semilla para que brote un girasol ✨</p>
+        <div class="seed-wrapper" id="seedWrapper" tabindex="0" role="button">
+          <div class="seed" id="seed"><div class="seed-inner"></div></div>
+          <div class="seed-glow"></div>
+        </div>
+        <p class="onboarding-footer">Toca la semilla para comenzar</p>
+      </div>
+    </div>
+  </div>
+  <audio id="bgMusic" preload="auto"><source src="Count On Me - Bruno Mars.m4a" type="audio/mpeg"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
